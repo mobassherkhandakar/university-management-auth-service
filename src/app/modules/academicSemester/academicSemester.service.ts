@@ -80,3 +80,4 @@ export const AcademicSemesterService = {
   createSemester,
   getAllSemester,
 };
+//hello
