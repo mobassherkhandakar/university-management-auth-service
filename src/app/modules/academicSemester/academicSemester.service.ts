@@ -14,13 +14,13 @@ const createSemester = async (
 const getAllSemester = async (paginationOptions: IPaginationOptions) => {
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOptions);
-  console.log('🚀 ~ getAllSemester ~ sortBy:', sortBy, sortOrder);
 
+  //sorting Semester
   const sortCondition: { [kay: string]: SortOrder } = {};
-
   if (sortBy && sortOrder) {
     sortCondition[sortBy] = sortOrder;
   }
+
   const result = await AcademicSemester.find({})
     .sort(sortCondition)
     .skip(skip)
