@@ -11,7 +11,11 @@ const createSemester = async (
   return result;
 };
 
-const getAllSemester = async (paginationOptions: IPaginationOptions) => {
+const getAllSemester = async (
+  paginationOptions: IPaginationOptions,
+  filters,
+) => {
+  console.log('🚀 ~ filters:', filters, paginationOptions);
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOptions);
 
