@@ -14,3 +14,4 @@ export const academicSemesterMonth: IAcademicSemesterMonth[] = [
   'November',
   'December',
 ];
+export const academicSemesterSearchAbleField = ['title', 'code'];

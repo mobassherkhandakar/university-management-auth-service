@@ -1,6 +1,7 @@
 import { SortOrder } from 'mongoose';
 import { paginationHelper } from '../../../helpers/paginationHelper';
 import { IPaginationOptions } from '../../../interface/pagination';
+import { academicSemesterSearchAbleField } from './academicSemester.constants';
 import {
   IAcademicSemester,
   IAcademicSemesterFielters,
@@ -21,18 +22,29 @@ const getAllSemester = async (
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOptions);
   const { searchTerm } = filters;
-  const andcondition = [
-    {
-      $or: [
-        {
-          title: {
-            $regex: searchTerm,
-            $options: 'i',
-          },
+  const andcondition = [];
+  if (searchTerm) {
+    andcondition.push({
+      $or: academicSemesterSearchAbleField.map(field => ({
+        [field]: {
+          $regex: searchTerm,
+          $options: 'i',
         },
-      ],
-    },
-  ];
+      })),
+    });
+  }
+  // const andcondition = [
+  //   {
+  //     $or: [
+  //       {
+  //         title: {
+  //           $regex: searchTerm,
+  //           $options: 'i',
+  //         },
+  //       },
+  //     ],
+  //   },
+  // ];
 
   //sorting Semester
   const sortCondition: { [kay: string]: SortOrder } = {};
