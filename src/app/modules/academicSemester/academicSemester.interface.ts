@@ -25,3 +25,6 @@ export type IAcademicSemester = {
   endMonth: IAcademicSemesterMonth;
 };
 export type IAcademicSemesterModel = Model<IAcademicSemester>;
+export type IAcademicSemesterFielters = {
+  searchTerm?: string;
+};

@@ -1,7 +1,10 @@
 import { SortOrder } from 'mongoose';
 import { paginationHelper } from '../../../helpers/paginationHelper';
 import { IPaginationOptions } from '../../../interface/pagination';
-import { IAcademicSemester } from './academicSemester.interface';
+import {
+  IAcademicSemester,
+  IAcademicSemesterFielters,
+} from './academicSemester.interface';
 import { AcademicSemester } from './academicSemester.modal';
 
 const createSemester = async (
@@ -13,11 +16,23 @@ const createSemester = async (
 
 const getAllSemester = async (
   paginationOptions: IPaginationOptions,
-  filters,
+  filters: IAcademicSemesterFielters,
 ) => {
-  console.log('🚀 ~ filters:', filters, paginationOptions);
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOptions);
+  const { searchTerm } = filters;
+  const andcondition = [
+    {
+      $or: [
+        {
+          title: {
+            $regex: searchTerm,
+            $options: 'i',
+          },
+        },
+      ],
+    },
+  ];
 
   //sorting Semester
   const sortCondition: { [kay: string]: SortOrder } = {};
@@ -25,7 +40,7 @@ const getAllSemester = async (
     sortCondition[sortBy] = sortOrder;
   }
 
-  const result = await AcademicSemester.find({})
+  const result = await AcademicSemester.find({ $and: andcondition })
     .sort(sortCondition)
     .skip(skip)
     .limit(limit);
