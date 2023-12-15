@@ -21,8 +21,10 @@ const getAllSemester = async (
 ) => {
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOptions);
-  const { searchTerm } = filters;
+  const { searchTerm, ...filterData } = filters;
+  console.log('🚀 ~ filterData:', Object.entries(filterData));
   const andcondition = [];
+  // Searching SemesterData
   if (searchTerm) {
     andcondition.push({
       $or: academicSemesterSearchAbleField.map(field => ({
@@ -33,6 +35,15 @@ const getAllSemester = async (
       })),
     });
   }
+  //filtering Data
+  if (Object.entries(filterData).length) {
+    andcondition.push({
+      $and: Object.entries(filterData).map(([field, value]) => ({
+        [field]: value,
+      })),
+    });
+  }
+
   // const andcondition = [
   //   {
   //     $or: [
