@@ -22,7 +22,6 @@ const getAllSemester = async (
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOptions);
   const { searchTerm, ...filterData } = filters;
-  console.log('🚀 ~ filterData:', Object.entries(filterData));
   const andcondition = [];
   // Searching SemesterData
   if (searchTerm) {
