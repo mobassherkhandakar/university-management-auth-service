@@ -16,6 +16,9 @@ export type IAcademicSemesterMonth =
 
 export type IAcademicSemesterCode = '01' | '02' | '03';
 export type IAcademicSemesterTitle = 'Autumn' | 'Summer' | 'Fall';
+export type academicSemesterCodeMapper = {
+  [kay: string]: string;
+};
 
 export type IAcademicSemester = {
   title: IAcademicSemesterTitle;
