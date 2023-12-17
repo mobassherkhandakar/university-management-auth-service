@@ -1,6 +1,6 @@
 import cors from 'cors';
 import express, { Application, NextFunction, Request, Response } from 'express';
-import morgan from 'morgan';
+// import morgan from 'morgan';
 import gobalErrorHandler from './app/middlewares/globalErrorHandler';
 import routes from './app/routes';
 import httpStatus from './shared/httpStatus';
@@ -9,7 +9,7 @@ const app: Application = express();
 //cors
 app.use(cors());
 //morgan
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 
 //perser
 app.use(express.json());

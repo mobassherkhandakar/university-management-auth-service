@@ -1,7 +1,12 @@
 import { SortOrder } from 'mongoose';
+import ApiError from '../../../errors/ApiError';
 import { paginationHelper } from '../../../helpers/paginationHelper';
 import { IPaginationOptions } from '../../../interface/pagination';
-import { academicSemesterSearchAbleField } from './academicSemester.constants';
+import httpStatus from '../../../shared/httpStatus';
+import {
+  academicSemesterSearchAbleField,
+  academicSemesterTitleCodeMapper,
+} from './academicSemester.constants';
 import {
   IAcademicSemester,
   IAcademicSemesterFielters,
@@ -11,6 +16,9 @@ import { AcademicSemester } from './academicSemester.modal';
 const createSemester = async (
   payload: IAcademicSemester,
 ): Promise<IAcademicSemester> => {
+  if (academicSemesterTitleCodeMapper[payload.title] !== payload.code) {
+    throw new ApiError(httpStatus.CONFLICT, 'Invalid Semester Code');
+  }
   const result = await AcademicSemester.create(payload);
   return result;
 };
