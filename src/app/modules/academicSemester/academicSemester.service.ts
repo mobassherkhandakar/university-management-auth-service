@@ -93,7 +93,7 @@ const getSingleSemester = async (id: string) => {
 const updateSemester = async (
   id: string,
   paylod: Partial<IAcademicSemester>,
-) => {
+): Promise<IAcademicSemester | null> => {
   const result = await AcademicSemester.findOneAndUpdate({ id: id }, paylod, {
     new: true,
   });
