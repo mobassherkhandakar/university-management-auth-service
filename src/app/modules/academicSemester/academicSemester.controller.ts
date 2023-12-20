@@ -46,12 +46,12 @@ const getSingleSemester = catchAsync(async (req: Request, res: Response) => {
 
 const updateSemester = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
-  const body = req.body;
-  const result = await AcademicSemesterService.updateSemester(id, body);
+  const updateData = req.body;
+  const result = await AcademicSemesterService.updateSemester(id, updateData);
   sendResponse<IAcademicSemester>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Update semester done',
+    message: 'Update semester done hoyse',
     data: result,
   });
 });

@@ -94,7 +94,14 @@ const updateSemester = async (
   id: string,
   paylod: Partial<IAcademicSemester>,
 ): Promise<IAcademicSemester | null> => {
-  const result = await AcademicSemester.findOneAndUpdate({ id: id }, paylod, {
+  if (
+    paylod.title &&
+    paylod.code &&
+    academicSemesterTitleCodeMapper[paylod.title] !== paylod.code
+  ) {
+    throw new ApiError(httpStatus.CONFLICT, 'Invalid Semester code');
+  }
+  const result = await AcademicSemester.findOneAndUpdate({ _id: id }, paylod, {
     new: true,
   });
   return result;
