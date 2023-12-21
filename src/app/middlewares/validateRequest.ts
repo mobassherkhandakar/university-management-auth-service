@@ -16,4 +16,5 @@ const validateRequest =
       next(error);
     }
   };
+
 export default validateRequest;

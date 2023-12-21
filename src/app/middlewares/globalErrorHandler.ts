@@ -31,7 +31,7 @@ const gobalErrorHandler: ErrorRequestHandler = (
     statasCode = simplifiedError.statasCode;
     message = simplifiedError.message;
     errorMessage = simplifiedError.errorMessage;
-  } else if (error?.name) {
+  } else if (error?.name === 'CastError') {
     const simplifiedError = handleCastError(error);
     statasCode = simplifiedError.statasCode;
     message = simplifiedError.message;
