@@ -3,4 +3,4 @@ const routes = express.Router();
 
 routes.post('/create-faculty');
 
-export const AcademicFacultyRoutes = routes;
+export const AcademicFacultyRoute = routes;
