@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
+import { paginationSortFields } from '../../../constants/pagination';
 import catchAsync from '../../../shared/catchAsync';
 import httpStatus from '../../../shared/httpStatus';
+import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
 import { IAcademicDepertment } from './academicDepertment.interface';
 import { AcademicDepartmentService } from './academicDepertment.service';
@@ -16,6 +18,25 @@ const createDepartmet = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
+const getAllDepartment = catchAsync(async (req: Request, res: Response) => {
+  {
+    const pagination = pick(req.query, paginationSortFields);
+    const filters = pick(req.query, ['title']);
+    const result = await AcademicDepartmentService.getAllDepartment(
+      pagination,
+      filters,
+    );
+    sendResponse<IAcademicDepertment[]>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Get all department done',
+      meta: result.meta,
+      data: result.data,
+    });
+  }
+});
 export const AcademicDepartmentController = {
   createDepartmet,
+  getAllDepartment,
 };

@@ -7,5 +7,6 @@ routes.post(
 
   AcademicDepartmentController.createDepartmet,
 );
+routes.get('/', AcademicDepartmentController.getAllDepartment);
 
 export const AcademicDepartmentRoute = routes;
