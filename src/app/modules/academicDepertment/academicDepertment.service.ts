@@ -17,7 +17,6 @@ const createDepertment = async (
   );
   return result;
 };
-
 const getAllDepartment = async (
   pagination: IPaginationOptions,
   filters: IAcademicDepartmentFilters,
@@ -62,7 +61,14 @@ const getAllDepartment = async (
     data: result,
   };
 };
+const getSingleSemester = async (
+  id: string,
+): Promise<IAcademicDepertment | null> => {
+  const result = await AcademicDepartment.findById(id);
+  return result;
+};
 export const AcademicDepartmentService = {
   createDepertment,
   getAllDepartment,
+  getSingleSemester,
 };
