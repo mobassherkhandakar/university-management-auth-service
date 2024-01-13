@@ -18,7 +18,6 @@ const createDepartmet = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
-
 const getAllDepartment = catchAsync(async (req: Request, res: Response) => {
   {
     const pagination = pick(req.query, paginationSortFields);
@@ -36,7 +35,18 @@ const getAllDepartment = catchAsync(async (req: Request, res: Response) => {
     });
   }
 });
+const getSingleDeparment = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await AcademicDepartmentService.getSingleDeparment(id);
+  sendResponse<IAcademicDepertment>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'get Single semester done',
+    data: result,
+  });
+});
 export const AcademicDepartmentController = {
   createDepartmet,
   getAllDepartment,
+  getSingleDeparment,
 };
