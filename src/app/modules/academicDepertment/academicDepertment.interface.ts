@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongoose';
 import { IAcademicFaculty } from '../academicFaculty/academicFaculty.interface';
 
-export type IAcademicDepertment = {
+export type IAcademicDepartment = {
   title: string;
   academicFaculty: ObjectId | IAcademicFaculty;
 };
