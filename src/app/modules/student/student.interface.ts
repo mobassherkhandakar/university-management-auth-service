@@ -6,4 +6,5 @@ type UserName = {
 export type IStudent = {
   id: string;
   name: UserName;
+  gender: 'male' | 'female';
 };
