@@ -8,4 +8,5 @@ export type IStudent = {
   name: UserName;
   gender: 'male' | 'female';
   dateOfBirth: string;
+  email: string;
 };
