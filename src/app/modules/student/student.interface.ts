@@ -9,4 +9,5 @@ export type IStudent = {
   gender: 'male' | 'female';
   dateOfBirth: string;
   email: string;
+  contactNo: string;
 };
