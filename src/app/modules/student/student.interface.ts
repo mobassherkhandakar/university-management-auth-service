@@ -10,4 +10,5 @@ export type IStudent = {
   dateOfBirth: string;
   email: string;
   contactNo: string;
+  emergencyContactNo: string;
 };
