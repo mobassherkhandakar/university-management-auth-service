@@ -12,4 +12,5 @@ export type IStudent = {
   contactNo: string;
   emergencyContactNo: string;
   bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
+  presendAdress: string;
 };
