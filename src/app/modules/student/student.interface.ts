@@ -1,3 +1,6 @@
+import { Types } from 'mongoose';
+import { IAcademicFaculty } from '../academicFaculty/academicFaculty.interface';
+
 type UserName = {
   firstName: string;
   middleName: string;
@@ -32,4 +35,5 @@ export type IStudent = {
   permanentAddress: string;
   guardian: Guardian;
   localGuardian: LocalGuardian;
+  academicFaculty: Types.ObjectId | IAcademicFaculty;
 };
