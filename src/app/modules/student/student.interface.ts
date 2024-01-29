@@ -1,4 +1,5 @@
 import { Types } from 'mongoose';
+import { IAcademicDepartment } from '../academicDepertment/academicDepertment.interface';
 import { IAcademicFaculty } from '../academicFaculty/academicFaculty.interface';
 
 type UserName = {
@@ -36,4 +37,5 @@ export type IStudent = {
   guardian: Guardian;
   localGuardian: LocalGuardian;
   academicFaculty: Types.ObjectId | IAcademicFaculty;
+  academicDepartment: Types.ObjectId | IAcademicDepartment;
 };
