@@ -40,4 +40,5 @@ export type IStudent = {
   academicFaculty: Types.ObjectId | IAcademicFaculty;
   academicDepartment: Types.ObjectId | IAcademicDepartment;
   academicSemester: Types.ObjectId | IAcademicSemester;
+  profileImage: string;
 };
