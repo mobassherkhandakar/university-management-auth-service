@@ -6,4 +6,18 @@ const StudentSchema = new Schema<IStudent>({
     type: String,
     required: true,
   },
+  name: {
+    firstName: {
+      type: String,
+      required: true,
+    },
+    middleName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
+  },
 });
