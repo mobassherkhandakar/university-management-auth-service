@@ -21,4 +21,9 @@ const StudentSchema = new Schema<IStudent>({
     },
     required: true,
   },
+  gender: {
+    type: String,
+    required: true,
+    enum: 
+  },
 });
