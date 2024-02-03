@@ -19,5 +19,6 @@ const StudentSchema = new Schema<IStudent>({
       type: String,
       required: true,
     },
+    required: true,
   },
 });
