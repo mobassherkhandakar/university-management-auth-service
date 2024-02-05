@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose';
+import { gender } from './student.constant';
 import { IStudent } from './student.interface';
 
 const StudentSchema = new Schema<IStudent>({
@@ -24,6 +25,10 @@ const StudentSchema = new Schema<IStudent>({
   gender: {
     type: String,
     required: true,
-    enum: 
+    enum: gender,
+  },
+  dateOfBirth: {
+    type: String,
+    required: true,
   },
 });
