@@ -41,4 +41,8 @@ const StudentSchema = new Schema<IStudent>({
     required: true,
     unique: true,
   },
+  emergencyContactNo: {
+    type: String,
+    required: true,
+  },
 });
