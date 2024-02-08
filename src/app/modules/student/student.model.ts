@@ -45,4 +45,8 @@ const StudentSchema = new Schema<IStudent>({
     type: String,
     required: true,
   },
+  bloodGroup: {
+    type: String,
+    required: true,
+  },
 });
