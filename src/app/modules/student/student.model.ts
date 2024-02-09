@@ -49,4 +49,8 @@ const StudentSchema = new Schema<IStudent>({
     type: String,
     required: true,
   },
+  presendAdress: {
+    type: String,
+    required: true,
+  },
 });
