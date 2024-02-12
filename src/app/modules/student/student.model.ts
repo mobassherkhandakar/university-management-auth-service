@@ -57,5 +57,10 @@ const StudentSchema = new Schema<IStudent>({
     type: String,
     required: true,
   },
-  guardian: {},
+  guardian: {
+    fatherName: {
+      type: String,
+      required: true,
+    },
+  },
 });
