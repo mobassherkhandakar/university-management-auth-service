@@ -66,5 +66,9 @@ const StudentSchema = new Schema<IStudent>({
       type: String,
       required: true,
     },
+    fatherContactNo: {
+      type: String,
+      required: true,
+    },
   },
 });
