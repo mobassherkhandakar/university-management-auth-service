@@ -82,5 +82,9 @@ const StudentSchema = new Schema<IStudent>({
       type: String,
       required: true,
     },
+    address: {
+      type: String,
+      required: true,
+    },
   },
 });
