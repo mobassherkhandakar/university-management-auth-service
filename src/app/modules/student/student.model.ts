@@ -99,6 +99,10 @@ const StudentSchema = new Schema<IStudent>({
         type: String,
         required: true,
       },
+      occupation: {
+        type: String,
+        required: true,
+      },
     },
   },
 });
