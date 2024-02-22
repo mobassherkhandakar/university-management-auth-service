@@ -113,4 +113,9 @@ const StudentSchema = new Schema<IStudent>({
       },
     },
   },
+  academicFaculty: {
+    type: Schema.Types.ObjectId,
+    ref: 'AcademicFaculty',
+    required: true,
+  },
 });
