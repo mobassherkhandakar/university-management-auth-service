@@ -118,4 +118,9 @@ const StudentSchema = new Schema<IStudent>({
     ref: 'AcademicFaculty',
     required: true,
   },
+  academicDepartment: {
+    type: Schema.Types.ObjectId,
+    ref: 'AcademicDepartment',
+    required: true,
+  },
 });
