@@ -128,4 +128,7 @@ const StudentSchema = new Schema<IStudent>({
     ref: 'AcademicSemester',
     required: true,
   },
+  profileImage: {
+    type: String,
+  },
 });
