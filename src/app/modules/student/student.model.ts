@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { gender } from './student.constant';
 import { IStudent } from './student.interface';
 
@@ -132,3 +132,5 @@ const StudentSchema = new Schema<IStudent>({
     type: String,
   },
 });
+
+export const Student = model<IStudent>('Student', StudentSchema);
