@@ -4,14 +4,14 @@ import catchAsync from '../../../shared/catchAsync';
 import httpStatus from '../../../shared/httpStatus';
 import pick from '../../../shared/pick';
 import sendResponse from '../../../shared/sendResponse';
-import { IAcademicDepertment } from './academicDepertment.interface';
+import { IAcademicDepartment } from './academicDepertment.interface';
 import { AcademicDepartmentService } from './academicDepertment.service';
 
 const createDepartmet = catchAsync(async (req: Request, res: Response) => {
   const { ...departmentData } = req.body;
   const result =
     await AcademicDepartmentService.createDepertment(departmentData);
-  sendResponse<IAcademicDepertment>(res, {
+  sendResponse<IAcademicDepartment>(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'Create AcademicDepartment done',
@@ -26,7 +26,7 @@ const getAllDepartment = catchAsync(async (req: Request, res: Response) => {
       pagination,
       filters,
     );
-    sendResponse<IAcademicDepertment[]>(res, {
+    sendResponse<IAcademicDepartment[]>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: 'Get all department done',
@@ -38,7 +38,7 @@ const getAllDepartment = catchAsync(async (req: Request, res: Response) => {
 const getSingleDeparment = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
   const result = await AcademicDepartmentService.getSingleDeparment(id);
-  sendResponse<IAcademicDepertment>(res, {
+  sendResponse<IAcademicDepartment>(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: 'get Single semester done',
