@@ -18,6 +18,10 @@ const userScema = new Schema<IUser>(
       type: String,
       required: true,
     },
+    needPasswordChange: {
+      type: Boolean,
+      required: true,
+    },
   },
   {
     timestamps: true,
