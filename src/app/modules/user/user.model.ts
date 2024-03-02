@@ -22,6 +22,10 @@ const userScema = new Schema<IUser>(
       type: Boolean,
       required: true,
     },
+    student: {
+      type: Schema.Types.ObjectId,
+      ref: 'Student',
+    },
   },
   {
     timestamps: true,
