@@ -131,6 +131,9 @@ const StudentSchema = new Schema<IStudent>({
   profileImage: {
     type: String,
   },
+}
+{
+    timestamps: true
 });
 
 export const Student = model<IStudent>('Student', StudentSchema);
