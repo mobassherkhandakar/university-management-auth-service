@@ -1,8 +1,8 @@
-import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
-import { UserService } from './app/modules/user/user.service'
+import express, { Application, Request, Response } from 'express'
 import morgan from 'morgan'
 import { UserRouter } from './app/modules/user/user.router'
+import { UserService } from './app/modules/user/user.service'
 
 const app: Application = express()
 //cors
