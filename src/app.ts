@@ -1,29 +1,38 @@
-import express, { Application, Request, Response } from 'express'
-import cors from 'cors'
-import { UserService } from './app/modules/user/user.service'
-import morgan from 'morgan'
-import { UserRouter } from './app/modules/user/user.router'
+import cors from 'cors';
+import express, { Application, NextFunction, Request, Response } from 'express';
+import morgan from 'morgan';
+import gobalErrorHandler from './app/middlewares/globalErrorHandler';
+import routes from './app/routes';
+import httpStatus from './shared/httpStatus';
 
-const app: Application = express()
+const app: Application = express();
 //cors
-app.use(cors())
+app.use(cors());
 //morgan
-app.use(morgan('dev'))
+app.use(morgan('dev'));
 
 //perser
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//test
-app.use('/api/v1/user', UserRouter)
+//routes
+app.use('/api/v1', routes);
+//Not found
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.status(httpStatus.NOT_FOUND).json({
+    success: false,
+    messsage: 'Not found',
+    errorMessage: [
+      {
+        path: req.originalUrl,
+        message: 'Api is not found',
+      },
+    ],
+  });
+  next();
+});
 
-app.get('/', async (req: Request, res: Response) => {
-  await UserService.createUser({
-    id: '999',
-    password: '4567',
-    role: 'admin',
-  })
-  res.send('Hello World! its working')
-})
+//globalErrorHandler
+app.use(gobalErrorHandler);
 
-export default app
+export default app;
