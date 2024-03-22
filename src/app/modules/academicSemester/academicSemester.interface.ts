@@ -1,3 +1,5 @@
+import { Model } from 'mongoose';
+
 export type IAcademicSemesterMonth =
   | 'January'
   | 'February'
@@ -22,3 +24,4 @@ export type IAcademicSemester = {
   startMonth: IAcademicSemesterMonth;
   endMonth: IAcademicSemesterMonth;
 };
+export type IAcademicSemesterModel = Model<IAcademicSemester>;

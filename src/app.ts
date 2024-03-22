@@ -1,8 +1,9 @@
 import cors from 'cors';
-import express, { Application } from 'express';
+import express, { Application, NextFunction, Request, Response } from 'express';
 import morgan from 'morgan';
 import gobalErrorHandler from './app/middlewares/globalErrorHandler';
-import { UserRouter } from './app/modules/user/user.router';
+import routes from './app/routes';
+import httpStatus from './shared/httpStatus';
 
 const app: Application = express();
 //cors
@@ -14,12 +15,23 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//test
-app.use('/api/v1/user', UserRouter);
+//routes
+app.use('/api/v1', routes);
+//Not found
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.status(httpStatus.NOT_FOUND).json({
+    success: false,
+    messsage: 'Not found',
+    errorMessage: [
+      {
+        path: req.originalUrl,
+        message: 'Api is not found',
+      },
+    ],
+  });
+  next();
+});
 
-// app.get('/', async (req: Request, res: Response, next) => {
-//   Promise.reject(new Error('ore baba error'));
-// });
 //globalErrorHandler
 app.use(gobalErrorHandler);
 
