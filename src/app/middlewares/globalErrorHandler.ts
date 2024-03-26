@@ -6,6 +6,7 @@ import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 import { ZodError } from 'zod';
 import config from '../../config';
 import ApiError from '../../errors/ApiError';
+import handleCastError from '../../errors/handleCastError';
 import handleValidationError from '../../errors/handleValidationError';
 import handleZodError from '../../errors/handleZodError';
 import { IGenericErrorMessage } from '../../interface/error';
@@ -27,6 +28,11 @@ const gobalErrorHandler: ErrorRequestHandler = (
 
   if (error?.name === 'ValidationError') {
     const simplifiedError = handleValidationError(error);
+    statasCode = simplifiedError.statasCode;
+    message = simplifiedError.message;
+    errorMessage = simplifiedError.errorMessage;
+  } else if (error?.name) {
+    const simplifiedError = handleCastError(error);
     statasCode = simplifiedError.statasCode;
     message = simplifiedError.message;
     errorMessage = simplifiedError.errorMessage;

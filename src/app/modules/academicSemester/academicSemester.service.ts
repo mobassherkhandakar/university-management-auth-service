@@ -69,8 +69,8 @@ const getAllSemester = async (
   if (sortBy && sortOrder) {
     sortCondition[sortBy] = sortOrder;
   }
-
-  const result = await AcademicSemester.find({ $and: andcondition })
+  const whereCondition = andcondition.length < 0 ? { $and: andcondition } : {};
+  const result = await AcademicSemester.find(whereCondition)
     .sort(sortCondition)
     .skip(skip)
     .limit(limit);
@@ -84,8 +84,12 @@ const getAllSemester = async (
     data: result,
   };
 };
+const getSingleSemester = async (id: string) => {
+  const result = await AcademicSemester.findById(id);
+  return result;
+};
 export const AcademicSemesterService = {
   createSemester,
   getAllSemester,
+  getSingleSemester,
 };
-//hello
