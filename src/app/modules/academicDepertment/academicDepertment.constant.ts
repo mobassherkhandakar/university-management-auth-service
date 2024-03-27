@@ -1,0 +1,1 @@
+export const academicDepartmentSearchAbleFields = ['title'];
