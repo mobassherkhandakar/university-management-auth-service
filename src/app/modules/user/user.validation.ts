@@ -85,7 +85,59 @@ const createStudentZodSchema = z.object({
     }),
   }),
 });
+const facultyValidationSchema = z.object({
+  body: z.object({
+    password: z.string().optional(),
+    faculty: z.object({
+      name: z.object({
+        firstName: z.string({
+          required_error: 'firstName is required',
+        }),
+        middleName: z.string().optional(),
+        lastName: z.string({
+          required_error: 'lastName is required',
+        }),
+      }),
+      gender: z.enum([...gender] as [string, ...string[]], {
+        required_error: 'Gender must berequired',
+      }),
+      dateOfBirth: z.string({
+        required_error: 'Date of Birth must be required',
+      }),
+      email: z
+        .string({
+          required_error: 'Email must be required',
+        })
+        .email(),
+      contactNo: z.string({
+        required_error: 'Contact No must be required',
+      }),
+      emergencyContactNo: z.string({
+        required_error: 'Emergency Contact No must be required',
+      }),
+      presentAddress: z.string({
+        required_error: 'Present Address must be required',
+      }),
+      permanentAddress: z.string({
+        required_error: 'Permanent Address must be required',
+      }),
+      bloodGroup: z.enum([...bloodGroup] as [string, ...string[]], {
+        required_error: 'bloodgrupe must be requeried',
+      }),
+      designation: z.string({
+        required_error: 'designation is required',
+      }),
+      academicDepartment: z.string({
+        required_error: 'academicDeparment is Required',
+      }),
+      academicFaculty: z.string({
+        required_error: 'academicFaculty is required',
+      }),
+    }),
+  }),
+});
 
 export const UserValidation = {
   createStudentZodSchema,
+  facultyValidationSchema,
 };
