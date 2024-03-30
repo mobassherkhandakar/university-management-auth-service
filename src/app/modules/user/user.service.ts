@@ -1,24 +1,23 @@
-import config from '../../../config';
-import { IUser } from './user.interface';
-import { User } from './user.model';
-import { generateUserId } from './user.utils';
+// import config from '../../../config';
+// import { AcademicSemester } from '../academicSemester/academicSemester.modal';
+// import { IStudent } from '../student/student.interface';
+// import { IUser } from './user.interface';
 
-const createUser = async (user: IUser): Promise<IUser | null> => {
-  //generate user id
-  const id = await generateUserId();
-  user.id = id;
+// const createStudent = async (
+//   student: IStudent,
+//   user: IUser,
+// ): Promise<IUser | null> => {
+//   // set default student password
+//   if (!user.password) {
+//     user.password = config.default_student_pass as string;
+//   }
+//   // set role
+//   user.role = 'Student';
+//   const academicSemester = await AcademicSemester.findById(
+//     student.academicSemester,
+//   ).lean();
+// };
 
-  // set user pass
-  if (!user.password) {
-    user.password = config.default_user_pass as string;
-  }
-  const createUser = await User.create(user);
-  if (!createUser) {
-    throw new Error('User created Faild');
-  }
-  return createUser;
-};
-
-export const UserService = {
-  createUser,
-};
+// export const UserService = {
+//   createStudent,
+// };
