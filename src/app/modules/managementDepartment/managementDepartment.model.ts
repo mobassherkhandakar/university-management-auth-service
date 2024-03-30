@@ -20,7 +20,7 @@ const ManagementDepartmentSchema = new Schema<
     toJSON: {
       virtuals: true,
     },
-  }
+  },
 );
 
 export const ManagementDepartment = model<
