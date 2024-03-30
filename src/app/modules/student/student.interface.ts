@@ -11,7 +11,6 @@ type UserName = {
 export type Guardian = {
   fatherName: string;
   fatherOccupation: string;
-  fatherContactNo: string;
   motherName: string;
   motherOccupation: string;
   motherContactNo: string;
@@ -33,7 +32,7 @@ export type IStudent = {
   contactNo: string;
   emergencyContactNo: string;
   bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
-  presendAddress: string;
+  presentAddress: string;
   permanentAddress: string;
   guardian: Guardian;
   localGuardian: LocalGuardian;
