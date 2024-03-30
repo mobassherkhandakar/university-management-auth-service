@@ -24,15 +24,15 @@ const userScema = new Schema<IUser>(
     },
     student: {
       type: Schema.Types.ObjectId,
-      ref: 'student',
+      ref: 'Student',
     },
     faculty: {
       type: Schema.Types.ObjectId,
-      ref: 'faculty',
+      ref: 'Faculty',
     },
     admin: {
       type: Schema.Types.ObjectId,
-      ref: 'admin',
+      ref: 'Admin',
     },
   },
   {

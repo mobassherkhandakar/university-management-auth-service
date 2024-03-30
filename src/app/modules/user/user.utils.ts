@@ -2,7 +2,7 @@ import { IAcademicSemester } from '../academicSemester/academicSemester.interfac
 import { User } from './user.model';
 
 export const findLastStudentId = async (): Promise<undefined | string> => {
-  const lastStudent = await User.findOne({ role: 'student' }, { id: 1, _id: 0 })
+  const lastStudent = await User.findOne({ role: 'Student' }, { id: 1, _id: 0 })
     .sort({ createdAt: -1 })
     .lean();
   return lastStudent?.id ? lastStudent?.id.substring(4) : undefined;
@@ -17,7 +17,7 @@ export const generateStudentId = async (
   return incrementId;
 };
 export const findLastFacultyId = async (): Promise<undefined | string> => {
-  const lastStudent = await User.findOne({ role: 'faculty' }, { id: 1, _id: 0 })
+  const lastStudent = await User.findOne({ role: 'Faculty' }, { id: 1, _id: 0 })
     .sort({ createdAt: -1 })
     .lean();
   return lastStudent?.id ? lastStudent?.id.substring(2) : undefined;
@@ -30,7 +30,7 @@ export const generateFacultyId = async () => {
   return incrementId;
 };
 export const findLastAdminId = async (): Promise<undefined | string> => {
-  const lastStudent = await User.findOne({ role: 'faculty' }, { id: 1, _id: 0 })
+  const lastStudent = await User.findOne({ role: 'Admin' }, { id: 1, _id: 0 })
     .sort({ createdAt: -1 })
     .lean();
   return lastStudent?.id ? lastStudent?.id.substring(2) : undefined;
