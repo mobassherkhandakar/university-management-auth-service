@@ -5,16 +5,28 @@ import sendResponse from '../../../shared/sendResponse';
 import { IUser } from './user.interface';
 import { UserService } from './user.service';
 
-const createUser = catchAsync(async (req: Request, res: Response) => {
-  const { ...user } = req.body;
-  const result = await UserService.createUser(user);
+const createStudent = catchAsync(async (req: Request, res: Response) => {
+  const { student, ...userData } = req.body;
+  const result = await UserService.createStudent(student, userData);
   sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Create User SuccessFully done',
+    message: 'Create Student SuccessFully done',
     data: result,
   });
 });
+const createFaculty = catchAsync(async (req: Request, res: Response) => {
+  const { faculty, ...userData } = req.body;
+  const result = await UserService.createFaculty(faculty, userData);
+  sendResponse<IUser>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Create Student SuccessFully done',
+    data: result,
+  });
+});
+
 export const UserController = {
-  createUser,
+  createStudent,
+  createFaculty,
 };
