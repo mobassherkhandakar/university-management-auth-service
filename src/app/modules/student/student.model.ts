@@ -7,6 +7,7 @@ const StudentSchema = new Schema<IStudent>(
     id: {
       type: String,
       required: true,
+      unique: true,
     },
     name: {
       type: {
@@ -52,7 +53,7 @@ const StudentSchema = new Schema<IStudent>(
       type: String,
       required: true,
     },
-    presendAdress: {
+    presendAddress: {
       type: String,
       required: true,
     },
