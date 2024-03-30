@@ -39,6 +39,6 @@ export const generateAdminId = async () => {
   const currentId =
     (await findLastAdminId()) || (0).toString().padStart(5, '0');
   let incrementId = (parseInt(currentId) + 1).toString().padStart(5, '0');
-  incrementId = `F-${incrementId}`;
+  incrementId = `A-${incrementId}`;
   return incrementId;
 };
