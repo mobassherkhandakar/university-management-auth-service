@@ -44,6 +44,7 @@ const StudentSchema = new Schema<IStudent>(
       required: true,
       unique: true,
     },
+
     emergencyContactNo: {
       type: String,
       required: true,
@@ -52,7 +53,7 @@ const StudentSchema = new Schema<IStudent>(
       type: String,
       required: true,
     },
-    presendAdress: {
+    presentAddress: {
       type: String,
       required: true,
     },
@@ -67,10 +68,6 @@ const StudentSchema = new Schema<IStudent>(
           required: true,
         },
         fatherOccupation: {
-          type: String,
-          required: true,
-        },
-        fatherContactNo: {
           type: String,
           required: true,
         },

@@ -5,9 +5,6 @@ const createStudentZodSchema = z.object({
   body: z.object({
     passaword: z.string().optional(),
     student: z.object({
-      id: z.string({
-        required_error: 'id is required',
-      }),
       name: z.object({
         firstName: z.string({
           required_error: 'firstName is required',
@@ -35,7 +32,7 @@ const createStudentZodSchema = z.object({
       bloodGroup: z.enum([...bloodGroup] as [string, ...string[]], {
         required_error: 'bloodGroup is required',
       }),
-      presendAdress: z.string({
+      presentAddress: z.string({
         required_error: 'presendAdress is required',
       }),
       permanentAddress: z.string({

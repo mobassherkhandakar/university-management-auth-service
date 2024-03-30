@@ -49,7 +49,7 @@ const createStudent = async (
   } catch (error) {
     await session.abortTransaction();
     await session.endSession();
-    throw error;
+    throw new Error(error as string);
   }
   if (newUserData) {
     newUserData = await User.findOne({ id: newUserData.id }).populate({
