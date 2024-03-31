@@ -1,4 +1,5 @@
-import { Types } from 'mongoose';
+/* eslint-disable no-unused-vars */
+import { Model, Types } from 'mongoose';
 
 export type IUser = {
   id: string;
@@ -9,3 +10,13 @@ export type IUser = {
   faculty?: Types.ObjectId;
   admin?: Types.ObjectId;
 };
+
+export type UserModel = {
+  isUserExist(
+    id: string,
+  ): Promise<Pick<IUser, 'id' | 'password' | 'needPasswordChange' | 'role'>>;
+  isPsswordMatched(
+    givenPassword: string,
+    savedPassword: string,
+  ): Promise<boolean>;
+} & Model<IUser>;

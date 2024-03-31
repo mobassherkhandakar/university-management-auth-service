@@ -23,6 +23,6 @@ export const logger = winston.createLogger({
   transports: [ConsoleTransport, MongoTransport],
 });
 
-if (config.node_env !== 'production') {
-  logger.remove(MongoTransport);
-}
+// if (config.node_env !== 'production') {
+//   logger.remove(MongoTransport);
+// }
